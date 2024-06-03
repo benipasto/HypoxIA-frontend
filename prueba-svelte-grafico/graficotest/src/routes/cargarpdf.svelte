@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HypoxIA</title>
+    <link rel="stylesheet" href="cargarpdf.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"></div>
+                <a href="#">Inicio</a>
+                <a href="#">Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="pag">
+        <form action="#">
+            <button>Insertar PDF</button>
+        </form>
+        <form action="#">
+            <button>Analizar</button>
+        </form>
+        
+        <h2>Primero aprete el botón de “Insertar PDF” para adjuntar el archivo pdf con los resultaods clínicos.</h2>
+        <h2>Segundo aprete el botón de “Analizar” para llevarte a otra pantalla con los resultados del análisis.</h2>
+    </section>
+</body>
+</html>

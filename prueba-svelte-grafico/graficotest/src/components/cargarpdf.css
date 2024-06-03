@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+
+h2{font-size: large;}
+ul{list-style: none;}
+
+body{
+    font-family: 'Luto', sans-serif;
+    margin:0;
+}
+
+button{
+    font-size: small;
+    font-weight: bold;
+    padding: 20px 40px;
+}
