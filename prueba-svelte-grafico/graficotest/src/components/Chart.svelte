@@ -1,5 +1,5 @@
 <script>
-  import { Bubble } from 'svelte-chartjs';
+  import { Bar } from 'svelte-chartjs';
   import { data } from './data.js';
 
   import {
@@ -14,4 +14,4 @@
   ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale);
 </script>
 
-<Bubble {data} options={{ responsive: true }} />
+<Bar {data} options={{ responsive: true }} />
