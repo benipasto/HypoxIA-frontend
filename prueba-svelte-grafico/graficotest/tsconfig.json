@@ -9,7 +9,7 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "node" //acá decía "bundler" de default pero al parecer poniendo esto se arregló un error que tenía"
+		"moduleResolution": "bundler" //acá decía "bundler" de default pero al parecer poniendo esto se arregló un error que tenía"
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	// except $lib which is handled by https://kit.svelte.dev/docs/configuration#files

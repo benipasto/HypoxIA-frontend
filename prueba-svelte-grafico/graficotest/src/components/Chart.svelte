@@ -1,17 +1,28 @@
+
 <script>
   import { Bar } from 'svelte-chartjs';
   import { data } from './data.js';
-
+  
   import {
-    Chart as ChartJS,
+    Chart,
     Title,
     Tooltip,
     Legend,
-    PointElement,
+    BarElement,
+    CategoryScale,
     LinearScale,
   } from 'chart.js';
 
-  ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale);
+  Chart.register(
+    Title,
+    Tooltip,
+    Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale
+  );
 </script>
 
 <Bar {data} options={{ responsive: true }} />
+
+
