@@ -1,0 +1,1 @@
+<!-- acá va todo lo que va en todas las págs (header, footer si termino poniendo) -->
