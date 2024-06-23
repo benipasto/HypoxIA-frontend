@@ -39,22 +39,22 @@
     }
     header{
         display: flex; /*esto pone todo en horizontal*/
-        height: 70px; /*esto le da una altura al header*/
+        height: 75px; /*esto le da una altura al header*/
         background-color: #B4D4DE;
         justify-content: space-between; /*esto pone un espacio en el medio de los contenidos, así quedan separados*/
         font-family: 'Lato', sans-serif;
         align-items: center;
         padding: 10px;
         margin: 0;
-        
     }
     .logo{
         display: flex;
         align-items: center;
     }
     .logo img{
-        height: 50px;
-        margin-right: 10px;
+        height: 70px;
+        margin-right: 5px;
+        margin-left: 10px;
     }
 </style>
 <slot />
