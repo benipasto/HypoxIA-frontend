@@ -22,7 +22,7 @@
 
   let myChart: Chart | null = null; // si no ponés que null= null tira error pq no sabe que valor tener cuando es null
 
-  const data = {
+  export const data = {
     labels: ['SpO2', 'Tiempo de sueño', 'Flujo de oxígeno'],
     datasets: [
       {
@@ -69,6 +69,10 @@
   .chart-container { /* estilizado, no lo toqué mucho x ahora*/
     width: 80%;
     height: 400px;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
   }
 </style>
 
