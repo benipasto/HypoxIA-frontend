@@ -6,21 +6,39 @@
     <title>HypoxIA</title>
 </head>
 <body>
-
     <div class="container">
-        <form action="#">
-            <button class="insertarPDF">Insertar PDF</button>
-        </form>
-        <a href="graficobarra">
+        <input type="file" id="fileInput">
+        <button id="selectFile">Seleccionar Archivo</button>
+        <p id="fileName"></p>
+        <a href="resultados">
             <button class="analizar">Analizar</button>
         </a>
             
         <h2> <span class="highlight">- Primero</span> aprete el botón de “Insertar PDF” para adjuntar el archivo pdf con los resultados clínicos.</h2>
         <h2> <span class="highlight">- Segundo</span> aprete el botón de “Analizar” para llevarte a otra pantalla con los resultados del análisis.</h2>
     </div>
-
 </body>
 </html>
+
+<script>
+    import { onMount } from 'svelte';
+  
+    onMount(() => {
+      const customButton = document.getElementById('selectFile');
+      const fileInput = document.getElementById('fileInput');
+      const fileNameElement = document.getElementById('fileName');
+  
+      customButton.addEventListener('click', function() {
+        fileInput.click();
+      });
+  
+      fileInput.addEventListener('change', function() {
+        const fileName = fileInput.files[0].name;
+        fileNameElement.textContent = fileName;
+      });
+    });
+  </script>
+  
 
 <style>
     .container{
@@ -51,5 +69,8 @@
     }
     .highlight{
         color: #FF5757;
+    }
+    input[type="file"] {
+        display: none;
     }
 </style>
