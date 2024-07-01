@@ -81,7 +81,6 @@
         display: flex;
         text-align: left;
     }
-
     form button{
         padding: 15px 30px;
         background-color: #27A69E;
@@ -91,10 +90,6 @@
         border-radius: 20px;
         cursor: pointer;
     }
-    form button:hover{
-        background-color: #1B7B75;
-    }
-
     /* ahora el estilizado de la imagen de la derecha */
     .loginimg{
         background: url(hypoxialogin2.png);
