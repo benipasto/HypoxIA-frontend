@@ -19,27 +19,7 @@
     </div>
 </body>
 </html>
-
-<script>
-    import { onMount } from 'svelte';
   
-    onMount(() => {
-      const customButton = document.getElementById('selectFile');
-      const fileInput = document.getElementById('fileInput');
-      const fileNameElement = document.getElementById('fileName');
-  
-      customButton.addEventListener('click', function() {
-        fileInput.click();
-      });
-  
-      fileInput.addEventListener('change', function() {
-        const fileName = fileInput.files[0].name;
-        fileNameElement.textContent = fileName;
-      });
-    });
-  </script>
-  
-
 <style>
     .container{
         display: flex;

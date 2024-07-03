@@ -7,24 +7,23 @@
 </head>
 <body>
     <div class="login">
-        <form action="">
+        <form id="loginForm">
             <div class="logo">
                 <img src="logohypoxia.png" alt="logo hypoxia">
             </div>
             <h1 class="title">Iniciar Sesión</h1>
             <label>
-                <input placeholder="Introduce tu correo electrónico" type="text" id="mail">
+                <input placeholder="Introduce tu correo electrónico" type="text" id="email">
             </label>
             <a href="#">¿No tienes cuenta? Registrarse</a>
             <label>
                 <input placeholder="Introduce tu contraseña" type="text" id="password">
             </label>
             <a href="#">¿Olvidaste tu contraseña?</a>
-            <button>Iniciar Sesión</button>
+            <button id="button">Iniciar Sesión</button>
         </form>
     </div>
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
-
 </body>
 </html>
 
@@ -99,3 +98,4 @@
         width: 50%;
     }
 </style>
+
