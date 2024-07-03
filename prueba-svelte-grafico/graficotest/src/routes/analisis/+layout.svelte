@@ -16,8 +16,6 @@
         </button>
     </nav>
 </header>
-<body>
-</body>
 
 <style> /*eso se abre para pasar a código css*/
     a{/*modifica todos los textos con links*/
@@ -41,7 +39,6 @@
     }
     header{
         display: flex; /*esto pone todo en horizontal*/
-        height: 75px; /*esto le da una altura al header*/
         background-color: #B4D4DE;
         justify-content: space-between; /*esto pone un espacio en el medio de los contenidos, así quedan separados*/
         font-family: 'Lato', sans-serif;
@@ -57,11 +54,6 @@
         height: 70px;
         margin-right: 5px;
         margin-left: 10px;
-    }
-    body{
-        margin: 0;
-        font-family: 'Lato', sans-serif;
-        background-color: #DDE0E0;
     }
 </style>
 <slot />

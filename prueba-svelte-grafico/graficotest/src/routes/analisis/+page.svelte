@@ -1,22 +1,15 @@
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HypoxIA</title>
-</head>
-<body>
-    <div class="container">
-        <input type="file" id="fileInput" style="display:none">
-        <button id="selectFile">Insertar PDF</button>
-        <p id="fileName"></p>
-        <a href="resultados">
-            <button class="analizar">Analizar</button>
-        </a>
-            
-        <h2> <span class="highlight">- Primero</span> aprete el botón de “Insertar PDF” para adjuntar el archivo pdf con los resultados clínicos.</h2>
-        <h2> <span class="highlight">- Segundo</span> aprete el botón de “Analizar” para llevarte a otra pantalla con los resultados del análisis.</h2>
-    </div>
-</body>
+<div class="container">
+    <input type="file" id="fileInput" style="display:none">
+    <button id="selectFile">Insertar PDF</button>
+    <p id="fileName"></p>
+    <a href="resultados">
+        <button class="analizar">Analizar</button>
+    </a>
+        
+    <h2> <span class="highlight">- Primero</span> aprete el botón de “Insertar PDF” para adjuntar el archivo pdf con los resultados clínicos.</h2>
+    <h2> <span class="highlight">- Segundo</span> aprete el botón de “Analizar” para llevarte a otra pantalla con los resultados del análisis.</h2>
+</div>
 
 <script lang='ts'>
     import { onMount } from 'svelte';
@@ -42,13 +35,19 @@
   
 
 <style>
+
+    *{
+        margin: 5px;
+    }
+
     .container{
         display: flex;
         align-items: center;
         flex-direction: column;
         text-align: center;
-        padding: 40px 30px;
+        padding: 20px 30px;
         justify-content: center;
+        margin-top: 15px;
     }
     .container button{
         padding: 20px 40px;
@@ -75,4 +74,5 @@
     p{
         font-size: large;
     }
+
 </style>
