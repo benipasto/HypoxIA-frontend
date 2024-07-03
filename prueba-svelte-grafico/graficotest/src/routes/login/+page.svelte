@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
-</head>
-<body>
+<div class="container">
     <div class="login">
         <form id="loginForm">
             <div class="logo">
@@ -15,7 +8,7 @@
             <label>
                 <input placeholder="Introduce tu correo electrónico" type="text" id="email">
             </label>
-            <a href="#">¿No tienes cuenta? Registrarse</a>
+            <a href="./register">¿No tienes cuenta? Registrarse</a>
             <label>
                 <input placeholder="Introduce tu contraseña" type="text" id="password">
             </label>
@@ -24,15 +17,26 @@
         </form>
     </div>
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
-</body>
-</html>
+</div>
 
 <style>
-    body{
+    :global(*) {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
         font-family: 'Lato', sans-serif;
+    }
+
+    :global(html, body) {
+        height: 100%;
+        width: 100%;
+    }
+    .container {
         display: flex;
+        height: 100vh;
+    }
+    :global(#svelte) {
+        height: 100%;
     }
     .logo img{
         height: 200px;
@@ -88,6 +92,9 @@
         font-size: 18px;
         border-radius: 20px;
         cursor: pointer;
+    }
+    form button:hover{
+        background-color: #1B7B75;
     }
     /* ahora el estilizado de la imagen de la derecha */
     .loginimg{

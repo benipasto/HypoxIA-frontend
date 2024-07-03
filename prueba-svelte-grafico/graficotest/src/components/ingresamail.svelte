@@ -18,39 +18,11 @@
 </body>
 
 <style>
-    body{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Lato', sans-serif;
-    }
-    .login{
-        flex: 1;
-        width: 50%;
-        background-color: #DDE0E0;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-    }
-    /* ahora el estilizado de la imagen de la derecha */
-    .loginimg{
-        flex: 1;
-        background: url(registrarse.png) no-repeat center center;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        width: 50%;
-    }
     .logo img{
         height: 200px;
         margin-bottom: 30px;
         margin-top: 40px;
     }
-    /* .login{
-        width: 50%;
-        background-color: #DDE0E0;
-        height: 100vh;
-    } */
     form{
         display: flex;
         align-items: center;

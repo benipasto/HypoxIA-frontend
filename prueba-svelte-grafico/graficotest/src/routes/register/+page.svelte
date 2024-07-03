@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from 'svelte';
     import Ingresamail from '../../components/ingresamail.svelte';
     import Contrasenas from '../../components/contrasenas.svelte';
 
@@ -9,12 +8,7 @@
         showIngresamail = !showIngresamail;
     }
 </script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-</head>
-<body>
+<div class="container">
     <div class="login">
         {#if showIngresamail}
         <Ingresamail {toggle} />
@@ -33,26 +27,40 @@
         </form>-->
     </div>
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
-</body>
+</div>
 
 <style>
-    body{
+    :global(*) {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
         font-family: 'Lato', sans-serif;
+    }
+
+    :global(html, body) {
+        height: 100%;
+        width: 100%;
+    }
+
+    :global(#svelte) {
+        height: 100%;
+    }
+    .container {
         display: flex;
+        height: 100vh;
     }
     .login{
-        width: 50%;
         background-color: #DDE0E0;
-        height: 100vh;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     /* ahora el estilizado de la imagen de la derecha */
     .loginimg{
-        background: url(registrarse.png);
+        flex: 1;
+        background-image: url('registrarse.png');
         background-size: cover;
         background-position: center;
-        height: 100vh;
-        width: 50%;
     }
 </style>

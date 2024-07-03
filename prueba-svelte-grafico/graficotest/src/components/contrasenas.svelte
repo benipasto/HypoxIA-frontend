@@ -1,19 +1,28 @@
 <script>
     export let toggle;
 </script>
-
-<div class="login">
-    <form action="">
-        <div class="logo">
-            <img src="logohypoxia.png" alt="logo hypoxia">
-        </div>
-        <h1 class="title">brobandowwww</h1>
-        <label>
-            <input placeholder="Introduce tu contraseña" type="text" id="mail">
-        </label>
-        <button on:click={toggle}>Siguiente</button>
-    </form>
-</div>
+<body>
+    <div class="login">
+        <form action="">
+            <div class="logo">
+                <img src="logohypoxia.png" alt="logo hypoxia">
+            </div>
+            <h1 class="title">Registarse</h1>
+            <h3 class="subtitle">Debe tener entre 8-16 carácteres</h3>
+            <label>
+                <input placeholder="Contraseña" type="text" id="password">
+            </label>
+            <label>
+                <input placeholder="Confirmar Contraseña" type="text" id="password">
+            </label>
+            <div class="buttons">
+                <button on:click={toggle}>Atrás</button>
+                <button>Registrarse</button>
+            </div>
+        </form>
+    </div>
+    <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
+</body>
 
 <style>
     .logo img{
@@ -58,6 +67,5 @@
         font-size: 18px;
         border-radius: 20px;
         cursor: pointer;
-        margin-top: 80px;
     }
 </style>
