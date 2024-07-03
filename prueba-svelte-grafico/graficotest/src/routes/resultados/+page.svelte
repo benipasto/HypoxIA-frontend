@@ -2,19 +2,31 @@
     import Graficolinea from "../../components/graficolinea.svelte";
 </script>
 
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados</title>
-</head>
 <body>
-<h2>Carga hipóxica:</h2>
-<Graficolinea/>
-<b></b>
+<div class="container">
+    <h2>Carga hipóxica:</h2>
+    <div class="grafico">
+        <Graficolinea/>
+    </div>
+</div>
 </body>
 <style>
-    body{
+    :global(*) {
         margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Lato', sans-serif;
+    }
+    h2{
+        margin-bottom: 20px;
+    }
+    :global(html, body) {
+        height: 100%;
+        width: 100%;
+        background-color: #DDE0E0
+    }
+    .container{
+        margin-left: 25px;
+        margin-top: 30px;
     }
 </style>

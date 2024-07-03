@@ -43,9 +43,10 @@
 </script>
 
 <style>
-    :global(*) {
+
+    /**:global(*) {
         margin: 0;
-        padding: 0;
+        pading: 0;
         box-sizing: border-box;
     }
 
@@ -56,7 +57,7 @@
 
     :global(#svelte) {
         height: 100%;
-    }
+    }*/
 
     .container {
         display: flex;

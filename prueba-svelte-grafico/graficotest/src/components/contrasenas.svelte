@@ -68,4 +68,7 @@
         border-radius: 20px;
         cursor: pointer;
     }
+    form button:hover{
+        background-color: #1B7B75;
+    }
 </style>
