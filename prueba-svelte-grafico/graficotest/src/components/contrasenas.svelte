@@ -1,5 +1,18 @@
-<script>
+<script lang='ts'>
     export let toggle;
+    export let password: string;
+    export let confirmPassword: string;
+    import register from '../routes/register/+page.svelte'
+
+    const handlePasswordInput = (event: Event) => {
+        const input = event.target as HTMLInputElement;
+        password = input.value;
+    };
+
+    const handleConfirmPasswordInput = (event: Event) => {
+        const input = event.target as HTMLInputElement;
+        confirmPassword = input.value;
+    };
 </script>
 <body>
     <div class="login">
@@ -10,18 +23,18 @@
             <h1 class="title">Registarse</h1>
             <h3 class="subtitle">Debe tener entre 8-16 carácteres</h3>
             <label>
-                <input placeholder="Contraseña" type="text" id="password">
+                <input placeholder="Contraseña" type="password" on:input={handlePasswordInput} bind:value={password} />
             </label>
             <label>
-                <input placeholder="Confirmar Contraseña" type="text" id="password">
+                <input placeholder="Confirmar Contraseña" type="password" on:input={handleConfirmPasswordInput} bind:value={confirmPassword} />
             </label>
             <div class="buttons">
                 <button on:click={toggle}>Atrás</button>
-                <button>Registrarse</button>
             </div>
         </form>
     </div>
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
+    <button on:click={register}>Registrar</button>
 </body>
 
 <style>

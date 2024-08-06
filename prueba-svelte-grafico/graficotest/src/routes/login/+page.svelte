@@ -1,3 +1,20 @@
+<script lang='ts'>
+  let mail: string = '';
+  let password: string = '';
+
+  const login = () => {
+    const storedMail = localStorage.getItem('mail');
+    const storedPassword = localStorage.getItem('password');
+
+    if (mail === storedMail && password === storedPassword) {
+      alert('Inicio de sesión exitoso');
+      window.location.href = '/'; // Redirigir a la página principal
+    } else {
+      alert('Correo o contraseña incorrectos');
+    }
+  };
+</script>
+
 <div class="container">
     <div class="login">
         <form id="loginForm">
@@ -6,14 +23,14 @@
             </div>
             <h1 class="title">Iniciar Sesión</h1>
             <label>
-                <input placeholder="Introduce tu correo electrónico" type="text" id="email">
+                <input placeholder="Introduce tu correo electrónico" type="email" bind:value={mail} id="email">
             </label>
             <a href="./register">¿No tienes cuenta? Registrarse</a>
             <label>
-                <input placeholder="Introduce tu contraseña" type="text" id="password">
+                <input placeholder="Introduce tu contraseña" type="password" bind:value={password} id="password">
             </label>
             <a href="#">¿Olvidaste tu contraseña?</a>
-            <button id="button">Iniciar Sesión</button>
+            <button on:click={login}>Iniciar sesión</button>
         </form>
     </div>
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->

@@ -1,5 +1,12 @@
-<script>
+<script lang='ts'>
     export let toggle;
+
+    export let mail: string;
+
+    const handleInput = (event: Event) => {
+        const input = event.target as HTMLInputElement;
+        mail = input.value;
+  };
 </script>
 <body>
     <div class="login">
@@ -9,7 +16,7 @@
             </div>
             <h1 class="title">Registarse</h1>
             <label>
-                <input placeholder="Introduce tu correo electrónico" type="text" id="mail">
+                <input placeholder="Introduce tu correo electrónico" type="mail" on:input={handleInput} bind:value={mail} />>
             </label>
             <button on:click={toggle}>Siguiente</button>
         </form>
