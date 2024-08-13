@@ -34,7 +34,7 @@
         </form>
     </div>
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
-    <button on:click={register}>Registrar</button>
+    <!-- <button on:click={register}>Registrar</button> -->
 </body>
 
 <style>

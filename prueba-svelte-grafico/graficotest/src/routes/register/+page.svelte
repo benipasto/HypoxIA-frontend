@@ -11,19 +11,21 @@
         showIngresamail = !showIngresamail;
     }
 
-    function register() {
-    if (mail && password && confirmPassword) {
-      if (password === confirmPassword) {
+     function register() {
+     if (mail && password && confirmPassword) {
+       if (password === confirmPassword) {
         localStorage.setItem('mail', mail);
         localStorage.setItem('password', password);
         alert('Registro exitoso');
-      } else {
+         } 
+       else {
         alert('Las contraseñas no coinciden');
-      }
-    } else {
-      alert('Por favor, complete todos los campos');
-    }
-  }
+         }
+       } 
+       else {
+        alert('Por favor, complete todos los campos');
+       }
+     }
 </script>
 
 <div class="container">
@@ -36,8 +38,9 @@
             {/if}
           </div>
     </div>
-    <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
     <button on:click={register}>Registrar</button>
+    <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
+    
 </div>
 
 <style>
