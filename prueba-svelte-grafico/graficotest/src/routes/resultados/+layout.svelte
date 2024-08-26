@@ -7,7 +7,7 @@
 
 <header>
     <a href="/" class="logo">
-        <img src="logohypoxia.png" alt=""><!--la imagen debería ir en static, pero me tira error medio raro la consola así que por ahora lo dejo en routes... aunq está mal pq si pongo /logohypoxia.png puedo ver el logo XD-->
+        <img src="logohorizontal.png" alt=""><!--la imagen debería ir en static, pero me tira error medio raro la consola así que por ahora lo dejo en routes... aunq está mal pq si pongo /logohypoxia.png puedo ver el logo XD-->
         <h2 class="nombre_logo">HypoxIA</h2>
     </a>
     <nav>

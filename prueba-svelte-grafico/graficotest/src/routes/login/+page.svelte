@@ -8,6 +8,10 @@
 
     if (mail === storedMail && password === storedPassword) {
       alert('Inicio de sesión exitoso');
+
+      // Guarda el usuario en localStorage bajo la clave 'user'
+      localStorage.setItem('user', JSON.stringify({ mail }));
+
       window.location.href = '/'; // Redirigir a la página principal
     } else {
       alert('Correo o contraseña incorrectos');

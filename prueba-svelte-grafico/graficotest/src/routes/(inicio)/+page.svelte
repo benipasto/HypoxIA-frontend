@@ -1,67 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HypoxIA</title>
-</head>
 <body>
     <section id="hero">
-        <h1>Cálculo de carga hipóxica, <br>al alcance de tu mano</h1>
-        <a href="/login">
-            <button>Inicia sesión o Registrarse</button>
+        <h1>Cargá tu Análisis</h1>
+        <h4>Haga Click en el botón de <span class="highlight">Análisis</span><br>para cargar el pdf con los datos</h4>
+        <a href="/analisis">
+            <button>Análisis</button>
         </a>
     </section>
 
-    <section id="quienesosmos">
-        <h2>¿Qué es HypoxIA?</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo rerum, necessitatibus repudiandae ex doloribus ut consequuntur deleniti cupiditate facilis! Asperiores corporis perferendis autem minus ipsa, vero dolorem. Voluptate, molestias praesentium.</p>
-        <h2>Problemática</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cumque, doloribus sapiente blanditiis illo dolorum deleniti, quas sequi voluptas laboriosam voluptate ipsum obcaecati, impedit earum soluta fugit sit accusantium nihil!</p>
+    <section id="cargashipoxicas">
+        <div class="infoCA">
+            <h1>¿Qué son las cargas hipóxicas?</h1>
+            <p>La carga hipóxica es una cifra que da un aproximado más cercano que las medidas de apneas actuales (el Índice de apnea-hipnopea o AHI y el Índice de Desaturación de Oxígeno o ODI).</p>
+            <h3>¡Es importante estar al día con tu análisis!</h3>
+        </div>
+        <div class="imgCA"><img src="#" alt="cargahipoxigaimg"></div>
+    </section>
+
+    <section id="hypoxia">
+        <h1>¿Qué es HypoxIA?</h1>
+        <div class="infoIA">
+            <h2>NUESTRA MISIÓN</h2>
+            <p>Queremos ayudar a calcular la carga hipóxica para facilitar y mejorar el diagnostico de las personas que tienen apneas de sueño.</p>
+        </div>
+        <div class="infoIA">
+            <h2>NUESTRO APORTE</h2>
+            <p>La "carga hipóxica" predice con mejor precisión la mortalidad por ECV (enfermedades cardiovasculares) en todas las poblaciones. Creamos HypoxIA para facilitar la vida de los médicos, la tuya y la de tus seres queridos.</p>
+        </div>
     </section>
 
     <section id="consecuencias">
-        <div class="container">
-            <h2>Consecuencias de las apneas del sueño</h2>
-            <div class="carta">
-                <h3>consecuencia 1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti qui numquam laborum repellendus incidunt, iste aut quo praesentium cumque, voluptatum voluptate perspiciatis eligendi mollitia consequatur aliquid at ea facere consequuntur.</p>
-            </div>
-            <div class="carta">
-                <h3>consecuencia 2</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti qui numquam laborum repellendus incidunt, iste aut quo praesentium cumque, voluptatum voluptate perspiciatis eligendi mollitia consequatur aliquid at ea facere consequuntur.</p>
-            </div>
-            <div class="carta">
-                <h3>consecuencia 3</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti qui numquam laborum repellendus incidunt, iste aut quo praesentium cumque, voluptatum voluptate perspiciatis eligendi mollitia consequatur aliquid at ea facere consequuntur.</p>
-            </div>
+        <h1>Consecuencias</h1>
+        <h3>¿Qué pasa si no tratamos las apneas del sueño?</h3>
+        <div class="carta">
+            <p> <span class="highlight">●</span> Despertarse durante la noche, jadear o asfixiarse</p>
         </div>
-    </section>
-
-    <section id="solucion">
-        <h1>Solución</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores, sit asperiores? Magni hic itaque iusto ab illum, odio, sapiente vero velit incidunt laudantium, cupiditate blanditiis labore amet deserunt ad nesciunt?</p>
+        <div class="carta">
+            <p> <span class="highlight">●</span> Dolores de cabeza por la mañana</p>
+        </div>
+        <div class="carta">
+            <p> <span class="highlight">●</span> Problemas de concentración durante el día.</p>
+        </div>
+        <div class="carta">
+            <p> <span class="highlight">●</span> Somnolencia diurna excesiva</p>
+        </div>
+        <div class="imgCONSECUENCIAS"><img src="#" alt="apneasueño"></div>
     </section>
 
     <section id="sobrenosotros">
-        <div class="container">
-            <h3>Sobre nosotros</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam nemo nostrum reiciendis nam, ipsam beatae facere minima. Earum, odio ducimus velit corrupti laboriosam veniam sint, quod sit quo labore autem?</p>
-        </div>
+        <h1>Sobre Nosotros</h1>
+        <p>Somos un grupo de cuatro estudiantes, los cuáles teníamos ganas de hacer un proyecto relacionado al sector de la salud, así nace HypoxIA. Buscamos problemas existentes que no tengan solución o si tenían, una forma de mejorarlas. Así se nos ocurre trabajar con las cargas hipóxicas, que investigamos con la ayuda de distintos profesionales</p>
     </section>
 
-    <section id="contacto">
-        <h3>Contacto</h3>
-        <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa non sed ullam explicabo sit qui quibusdam veniam harum voluptatibus quae, accusamus velit enim doloribus consequatur, numquam quas nesciunt. Perferendis, consequuntur!</h5>
+    <section class="casifooter">
+        <h1>¡Esperamos tu análisis!</h1>
     </section>
-
 </body>
-</html>
+
 
 <style>
     body{
         padding: 0;
         margin: 0;
+        background-color: #F5F5F5;
     }
+    /* H1=TURQUESA
+    H2=ROJO
+    H3=TURQUESA 
+    p= NEGRO
+    highlight=ROJO*/
+    
 </style>
