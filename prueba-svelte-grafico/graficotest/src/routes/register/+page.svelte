@@ -1,44 +1,38 @@
 <script lang='ts'>
-    import Ingresamail from '../../components/ingresamail.svelte';
-    import Contrasenas from '../../components/contrasenas.svelte';
+  import Ingresamail from '../../components/ingresamail.svelte';
+  import Contrasenas from '../../components/contrasenas.svelte';
+  import { register } from '../../utils/registerFunction';
 
-    let mail: string = '';
-    let password: string = '';
-    let confirmPassword: string = '';
-    let showIngresamail = true;
+  let showIngresamail = true;
+  let mail: string = '';
+  let password: string = '';
+  let confirmPassword: string = '';
 
-    function toggle() {
-        showIngresamail = !showIngresamail;
-    }
+  function toggle() {
+      showIngresamail = !showIngresamail;
+  }
 
-     function register() {
-     if (mail && password && confirmPassword) {
-       if (password === confirmPassword) {
-        localStorage.setItem('mail', mail);
-        localStorage.setItem('password', password);
-        alert('Registro exitoso');
-         } 
-       else {
-        alert('Las contraseñas no coinciden');
-         }
-       } 
-       else {
-        alert('Por favor, complete todos los campos');
-       }
-     }
+  function handleRegister() {
+    register(mail, password, confirmPassword);
+  }
 </script>
 
 <div class="container">
     <div class="login">
         <div class="login">
             {#if showIngresamail}
-              <Ingresamail {toggle} bind:mail />
+              <Ingresamail {toggle} bind:mail={mail} />
             {:else}
-              <Contrasenas {toggle} bind:password bind:confirmPassword />
+              <Contrasenas
+              {toggle} 
+              {mail} 
+              bind:password={password} 
+              bind:confirmPassword={confirmPassword} 
+              onRegister={handleRegister} /> <!-- Cambiado de {register} a {onRegister} -->
             {/if}
           </div>
     </div>
-    <button on:click={register}>Registrar</button>
+    <!-- <button on:click={register}>Registrar</button> -->
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
     
 </div>
