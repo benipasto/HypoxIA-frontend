@@ -89,5 +89,34 @@
         margin-right: 5px;
         margin-left: 10px;
     }
+    footer{
+        background-color: #3A736F;
+        display: flex;
+        justify-content: space-between;
+        height: 200px;
+        margin: 0;
+        align-items: center;
+    }
+    .contacto{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #FFFFFF;
+    }
+    .contacto h3{
+        margin: 15px;
+        margin-left: 100px;
+    }
+    span.highlight{
+        font-weight: 100;
+        text-decoration: underline;
+        margin-left: 40px;
+    }
 </style>
 <slot />
+<footer>
+    <div class="contacto">
+        <h3>Contacto:     <span class="highlight">hypoxia@gmail.com</span></h3>
+        <h3>Teléfono:     <span class="highlight">+54 9 11 1234-5678 </span></h3>
+    </div>
+</footer>
