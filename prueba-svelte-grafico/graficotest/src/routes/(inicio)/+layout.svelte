@@ -19,7 +19,7 @@
     function logout() {
         localStorage.removeItem('user');
         user = null;
-        // Redirigir al usuario si es necesario. COMENTARIO: por ahora no lo uso pero sirve en un futuro
+        // Redirigir al usuario si es necesario. COMENTARIO: por ahora no lo uso pero sirve en un futuro. AL FINAL SI LO USO JAJA SALU2
     }
 </script>
 <header>
@@ -28,15 +28,29 @@
     </a>
     <nav>
         {#if user}
-            <div>Bienvenido, {user}</div>
+            <div class='user'>
+                Bienvenido, {user}
+                <button on:click={logout}>Cerrar sesión</button>
+            </div>
             <!-- acá abajo iría el botón de logout si algún dia lo ponemos -->
         {:else}
-            <a href="/login"><button>Iniciar sesión</button></a>
+            <button><a href="/login">Iniciar sesión</a></button>
         {/if}    
     </nav>
 </header>
 
 <style>
+    .user{
+        padding: none;
+        display: flex;
+        margin-right: 10px;
+        font-size: large;
+        font-weight: 600;
+    }
+    .user button{
+        margin-left: 20px;
+        font-size: large;
+    }
     a{/*modifica todos los textos con links*/
         text-decoration: none;
         color: #3A6D6A; /*esto debería cambiarlo al color del logo pero no lo encontré xd*/
@@ -51,10 +65,10 @@
         border: none;
         padding-right: 10px;
         border-radius: 20px;
-        height: 40px;
+        height: 20px;
     }
     nav button:hover{/*hace que cuando pases el mouse x arriba pase algo*/
-        background-color: #8FAEB8;
+        text-decoration: underline;
     }
     header{
         display: flex; /*esto pone todo en horizontal*/

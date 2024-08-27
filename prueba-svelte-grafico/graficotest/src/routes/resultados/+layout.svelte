@@ -4,20 +4,39 @@
 
 <!-- /routes/+layout.svelte -->
 <!-- /routes/+layout.svelte -->
+<script lang="ts">
+    let user: string | null = null;
+    import { onMount } from "svelte";
 
+    // Recuperar el usuario desde localStorage cuando se carga el componente
+    onMount(() => {
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            user = JSON.parse(userData).mail; // Muestra el mail del usuario
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('user');
+        user = null;
+        // Redirigir al usuario si es necesario. COMENTARIO: por ahora no lo uso pero sirve en un futuro
+    }
+</script>
 <header>
     <a href="/" class="logo">
         <img src="logohorizontal.png" alt=""><!--la imagen debería ir en static, pero me tira error medio raro la consola así que por ahora lo dejo en routes... aunq está mal pq si pongo /logohypoxia.png puedo ver el logo XD-->
-        <h2 class="nombre_logo">HypoxIA</h2>
     </a>
     <nav>
-        <button>
-            <a href="/login">Iniciar sesión / Registrarse</a>
-        </button>
+        {#if user}
+            <div>Bienvenido, {user}</div>
+            <!-- acá abajo iría el botón de logout si algún dia lo ponemos -->
+        {:else}
+            <a href="/login"><button>Iniciar sesión</button></a>
+        {/if}    
     </nav>
 </header>
 
-<style> /*eso se abre para pasar a código css*/
+<style>
     a{/*modifica todos los textos con links*/
         text-decoration: none;
         color: #3A6D6A; /*esto debería cambiarlo al color del logo pero no lo encontré xd*/
@@ -52,7 +71,7 @@
         align-items: center;
     }
     .logo img{
-        height: 70px;
+        height: 30px;
         margin-right: 5px;
         margin-left: 10px;
     }

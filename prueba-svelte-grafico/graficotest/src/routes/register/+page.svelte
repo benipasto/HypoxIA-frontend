@@ -1,56 +1,80 @@
 <script lang='ts'>
-  import Ingresamail from '../../components/ingresamail.svelte';
-  import Contrasenas from '../../components/contrasenas.svelte';
-  import { register } from '../../utils/registerFunction';
+    import Ingresamail from '../../components/ingresamail.svelte';
+    import Contrasenas from '../../components/contrasenas.svelte';
+    import { register } from '../../utils/registerFunction';
+    import { setContext } from 'svelte';
 
-  let showIngresamail = true;
-  let mail: string = '';
-  let password: string = '';
-  let confirmPassword: string = '';
+    let mail: string = '';
+    let password: string = '';
+    let confirmPassword: string = '';
+    let showIngresamail = true;
 
-  function toggle() {
-      showIngresamail = !showIngresamail;
-  }
-
-  function handleRegister() {
+    function toggle() {
+        showIngresamail = !showIngresamail;
+    }
+    function handleRegister() {
     register(mail, password, confirmPassword);
   }
+
+    // function register(mail: string, password: string, confirmPassword: string) {
+    // if (!mail.trim()) {
+    //     alert('El campo de correo electrónico no puede estar vacío');
+    //     return;
+    // }
+
+    // if (!password.trim() || !confirmPassword.trim()) {
+    //     alert('Los campos de contraseña no pueden estar vacíos');
+    //     return;
+    // }
+
+    // if (password !== confirmPassword) {
+    //     alert('Las contraseñas no coinciden');
+    //     return;
+    // }
+
+    // localStorage.setItem('mail', mail);
+    // localStorage.setItem('password', password);
+    // alert('Registro exitoso');
+    // }
+
+setContext('register', register); // Coloca la función en el contexto
 </script>
 
 <div class="container">
     <div class="login">
         <div class="login">
             {#if showIngresamail}
-              <Ingresamail {toggle} bind:mail={mail} />
+              <Ingresamail {toggle} bind:mail />
             {:else}
-              <Contrasenas
+              <Contrasenas         
               {toggle} 
               {mail} 
-              bind:password={password} 
-              bind:confirmPassword={confirmPassword} 
-              onRegister={handleRegister} /> <!-- Cambiado de {register} a {onRegister} -->
+              bind:password 
+              bind:confirmPassword 
+              onRegister={handleRegister} />
+              <!-- <button on:click={register}>Registrar</button> -->
             {/if}
           </div>
     </div>
-    <!-- <button on:click={register}>Registrar</button> -->
+    
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
     
 </div>
 
 <style>
-    :global(*) {
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Lato', sans-serif;
     }
 
-    :global(html, body) {
+    html, body {
         height: 100%;
         width: 100%;
     }
 
-    :global(#svelte) {
+    #svelte {
         height: 100%;
     }
     .container {
