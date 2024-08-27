@@ -11,7 +11,7 @@
 </div>
 </body>
 <style>
-    :global(*) {
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -20,7 +20,7 @@
     h2{
         margin-bottom: 20px;
     }
-    :global(html, body) {
+    body {
         height: 100%;
         width: 100%;
         background-color: #DDE0E0

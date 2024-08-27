@@ -41,14 +41,14 @@
 </div>
 
 <style>
-    :global(*) {
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Lato', sans-serif;
     }
 
-    :global(html, body) {
+    html, body {
         height: 100%;
         width: 100%;
     }
@@ -56,7 +56,7 @@
         display: flex;
         height: 100vh;
     }
-    :global(#svelte) {
+    #svelte {
         height: 100%;
     }
     .logo img{
