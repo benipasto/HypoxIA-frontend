@@ -58,7 +58,7 @@
     }
     header{
         display: flex; /*esto pone todo en horizontal*/
-        height: 75px; /*esto le da una altura al header*/
+        height: 60px; /*esto le da una altura al header*/
         background-color: #B4D4DE;
         justify-content: space-between; /*esto pone un espacio en el medio de los contenidos, así quedan separados*/
         font-family: 'Lato', sans-serif;
