@@ -72,7 +72,7 @@
     }
     header{
         display: flex; /*esto pone todo en horizontal*/
-        height: 75px; /*esto le da una altura al header*/
+        height: 60px; /*esto le da una altura al header*/
         background-color: #B4D4DE;
         justify-content: space-between; /*esto pone un espacio en el medio de los contenidos, así quedan separados*/
         font-family: 'Lato', sans-serif;
@@ -95,7 +95,18 @@
         justify-content: space-between;
         height: 200px;
         margin: 0;
+        position: relative;
         align-items: center;
+    }
+    .circle{
+        position: absolute; /* Posiciona el círculo en relación con el contenedor */
+        bottom: -150px; /* Ajusta la posición vertical del círculo */
+        left: -125px; /* Ajusta la posición horizontal del círculo */
+        width: 250px; /* Ancho del círculo */
+        height: 250px; /* Alto del círculo */
+        background-color: transparent; /* Color de fondo del círculo */
+        border: 4px solid #27A69E; /* Color y grosor del borde */
+        border-radius: 50%; /* Hace que el div sea un círculo */
     }
     .contacto{
         display: flex;
@@ -105,7 +116,7 @@
     }
     .contacto h3{
         margin: 15px;
-        margin-left: 100px;
+        margin-left: 150px;
     }
     span.highlight{
         font-weight: 100;
@@ -118,5 +129,6 @@
     <div class="contacto">
         <h3>Contacto:     <span class="highlight">hypoxia@gmail.com</span></h3>
         <h3>Teléfono:     <span class="highlight">+54 9 11 1234-5678 </span></h3>
+        <div class="circle"></div>
     </div>
 </footer>
