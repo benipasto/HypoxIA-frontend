@@ -97,6 +97,7 @@
         margin: 0;
         position: relative;
         align-items: center;
+        overflow: hidden; 
     }
     .circle{
         position: absolute; /* Posiciona el círculo en relación con el contenedor */
