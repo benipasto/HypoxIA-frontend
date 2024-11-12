@@ -10,19 +10,22 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model InicioSesion {
+model Doctor {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   password  String
-  name      String?
+  name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  analisis Analisis[]
 }
 
 model Analisis {
-id        Int      @id @default(autoincrement())
-paciente  String?
-SaturacionOxigeno Int
-FlujoOxigeno  Int
-TiempoSueno Int
+  id                Int      @id @default(autoincrement())
+  paciente          String?
+  saturacionOxigeno Float
+  tiempoSueno       Float
+  cargaHipoxica     Float
+  doctor Doctor @relation(fields: [doctorId], references: [id])
+  doctorId          Int
 }
