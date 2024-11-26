@@ -115,10 +115,40 @@
         margin-left: 10px;
     }
 
-    nav .menu-item {
-        /* Aplica a cada ítem del menú */
+    footer{
+        background-color: #3A736F;
         display: flex;
+        justify-content: space-between;
+        height: 200px;
+        margin: 0;
+        position: relative;
         align-items: center;
+        overflow: hidden; 
+    }
+    .circle{
+        position: absolute; /* Posiciona el círculo en relación con el contenedor */
+        bottom: -150px; /* Ajusta la posición vertical del círculo */
+        left: -125px; /* Ajusta la posición horizontal del círculo */
+        width: 250px; /* Ancho del círculo */
+        height: 250px; /* Alto del círculo */
+        background-color: transparent; /* Color de fondo del círculo */
+        border: 4px solid #27A69E; /* Color y grosor del borde */
+        border-radius: 50%; /* Hace que el div sea un círculo */
+    }
+    .contacto{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #FFFFFF;
+    }
+    .contacto h3{
+        margin: 15px;
+        margin-left: 150px;
+    }
+    span.highlight{
+        font-weight: 100;
+        text-decoration: underline;
+        margin-left: 40px;
     }
 </style>
 

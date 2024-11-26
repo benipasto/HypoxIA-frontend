@@ -1,7 +1,7 @@
 <script lang='ts'>
-    import Ingresamail from '../../components/ingresamail.svelte';
-    import Contrasenas from '../../components/contrasenas.svelte';
-    import { register } from '../../utils/registerFunction';
+    import Ingresamail from '../../../components/ingresamail.svelte';
+    import Contrasenas from '../../../components/contrasenas.svelte';
+    import { register } from '../../../utils/registerFunction';
     import { setContext } from 'svelte';
 
     let mail: string = '';
