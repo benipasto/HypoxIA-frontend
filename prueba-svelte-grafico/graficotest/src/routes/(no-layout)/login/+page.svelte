@@ -62,7 +62,7 @@
     .logo img{
         height: 200px;
         margin-bottom: 30px;
-        margin-top: 40px;
+        margin-top: 100px;
     }
     .login{
         width: 50%;

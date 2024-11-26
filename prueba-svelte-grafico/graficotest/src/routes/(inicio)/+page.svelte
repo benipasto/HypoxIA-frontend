@@ -68,8 +68,6 @@
         </div>
     </div>       
    
-
-
     <div class="sobrenosotros">
         <div class="imgsobrenosotros"><img src="vectorhero.png" alt=""></div>
         <div class="info">
@@ -112,7 +110,7 @@
     .hero{
         height: 35rem;
         display: flex;
-        margin-top: 0px;
+        margin-top: 75px;
         padding: 0px;
     }
     .vectorHERO{
@@ -165,7 +163,7 @@
         margin-left: 180px;
     }
     .infoCA h1{
-        margin-top: -10px;
+        margin-top: 10px;
     }
     .infoCA p{
         font-size: 30px;
