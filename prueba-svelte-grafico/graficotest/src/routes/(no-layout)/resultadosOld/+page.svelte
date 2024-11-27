@@ -1,5 +1,5 @@
 <script>
-    import Graficolinea from "../../components/graficolinea.svelte";
+    import Graficolinea from "../../../components/graficolinea.svelte";
 </script>
 
 <body>
