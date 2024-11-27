@@ -3,14 +3,16 @@
   let password: string = '';
 
   const login = () => {
-    const storedMail = localStorage.getItem('mail');
-    const storedPassword = localStorage.getItem('password');
+    const users = (JSON.parse(localStorage.getItem('users') ?? '[]')) as any[];
+    // const storedMail = localStorage.getItem('mail');
+    // const storedPassword = localStorage.getItem('password');
+    const userinfo = users.find(x => x.mail === mail && x.password === password);
 
-    if (mail === storedMail && password === storedPassword) {
+    if (userinfo) {
       alert('Inicio de sesión exitoso');
 
       // Guarda el usuario en localStorage bajo la clave 'user'
-      localStorage.setItem('user', JSON.stringify({ mail }));
+      localStorage.setItem('user', JSON.stringify( userinfo ));
 
       window.location.href = '/'; // Redirigir a la página principal
     } else {

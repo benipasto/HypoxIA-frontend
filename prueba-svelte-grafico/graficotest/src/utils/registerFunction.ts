@@ -14,8 +14,11 @@ export function register(mail: string, password: string, confirmPassword: string
         return;
     }
 
-    localStorage.setItem('mail', mail);
-    localStorage.setItem('password', password);
+    const users = (JSON.parse(localStorage.getItem('users') ?? '[]')) as any[];
+    users.push({ mail, password });
+    // localStorage.setItem('mail', mail);
+    // localStorage.setItem('password', password);
+    localStorage.setItem('users', JSON.stringify(users));
     if (password === confirmPassword) {
         // Lógica de registro exitosa
         alert('Registro exitoso');
