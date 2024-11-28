@@ -1,6 +1,6 @@
 <script lang="ts">
     // Recuperar el mail del usuario logueado desde localStorage
-    let userMail: string = localStorage.getItem('mail') || '';
+    let userMail: string = JSON.parse(localStorage.getItem('user') ?? '{}').mail || '';
 </script>
 
 <style>
@@ -21,7 +21,7 @@
     .link:hover {
         text-decoration: underline;
     }
-    
+
     .menu {
         margin-top: 20px;
     }

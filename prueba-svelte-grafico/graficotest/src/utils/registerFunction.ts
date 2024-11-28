@@ -13,9 +13,20 @@ export function register(mail: string, password: string, confirmPassword: string
         alert('Las contraseñas no coinciden');
         return;
     }
-
+    function quickHash(text: string): number {
+        var hash = 0,
+          i, chr;
+        if (text.length === 0) return hash;
+        for (i = 0; i < text.length; i++) {
+          chr = text.charCodeAt(i);
+          hash = ((hash << 5) - hash) + chr;
+          hash |= 0;
+        }
+        return hash;
+    }
     const users = (JSON.parse(localStorage.getItem('users') ?? '[]')) as any[];
-    users.push({ mail, password });
+    const id = quickHash(mail);
+    users.push({ mail, password, id });
     // localStorage.setItem('mail', mail);
     // localStorage.setItem('password', password);
     localStorage.setItem('users', JSON.stringify(users));

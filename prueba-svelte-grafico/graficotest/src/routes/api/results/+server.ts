@@ -2,12 +2,12 @@ import prisma from "$lib/prisma";
 import { json } from "@sveltejs/kit";
 
 export async function GET({ params }: any) {
-    let { id } = await params.json();
+    let { doctorId, id } = await params.json();
 
     if (id) {
         let result = await prisma.analisis.findUnique({
             where: {
-                id
+                id, doctorId
             }
         });
 
@@ -18,21 +18,21 @@ export async function GET({ params }: any) {
     }
 
     // TODO: filtrar por doctor
-    let results = await prisma.analisis.findMany();
+    let results = await prisma.analisis.findMany({where:{doctorId}});
 
     //if (results)
     return json({ results }, { status: 200 })
 }
 
 export async function POST({ request }: any) {
-    let { paciente, saturacionOxigeno, tiempoSueno, cargaHipoxica } = await request.json();
+    let { paciente, saturacionOxigeno, tiempoSueno, cargaHipoxica, doctorId } = await request.json();
     let result = await prisma.analisis.create({
         data: {
             paciente,
             saturacionOxigeno,
             tiempoSueno,
             cargaHipoxica,
-            doctorId: 0
+            doctorId
         }
     })
 }

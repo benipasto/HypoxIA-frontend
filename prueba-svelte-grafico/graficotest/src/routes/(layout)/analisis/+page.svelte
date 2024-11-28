@@ -1,10 +1,25 @@
 
 <div class="container">
     <input type="file" id="fileInput" style="display:none">
-    <button id="selectFile">Insertar PDF</button>
-    <p id="fileName"></p>
+    <!-- <button id="selectFile">Insertar PDF</button>
+    <p id="fileName"></p> -->
+    <input
+        bind:value={saturacionOxigeno}
+        placeholder="Ingresa tu saturación de oxígeno"
+        type="number"
+    />
+    <input
+        bind:value={tiempoSueno}
+        placeholder="Ingresa tu tiempo de sueño"
+        type="number"
+    />
+    <input
+        bind:value={cargaHipoxica}
+        placeholder="Ingresa tu carga hipoxica (re troll)"
+        type="number"
+    />
     <a href="resultados">
-        <button class="analizar">Analizar</button>
+        <button on:click={sendData}>Analizar</button>
     </a>
         
     <h2> <span class="highlight">- Primero</span> aprete el botón de “Insertar PDF” para adjuntar el archivo pdf con los resultados clínicos.</h2>
@@ -12,25 +27,42 @@
 </div>
 
 <script lang='ts'>
-    import { onMount } from 'svelte';
-  
-    onMount(() => {
-      const customButton = document.getElementById('selectFile');
-      const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-      const fileNameElement = document.getElementById('fileName');
-      
-      if (customButton&&fileInput&&fileNameElement){
-      customButton.addEventListener('click', function() {
-        fileInput.click();
-      });
-  
-      fileInput.addEventListener('change', function() {
-        const files = fileInput.files;
-        const fileName = files ? files[0].name : '';
-        fileNameElement.textContent = fileName;
-        });
+
+    let saturacionOxigeno: number; // Saturación de oxígeno
+    let tiempoSueno: number; // Tiempo de sueño
+    let cargaHipoxica: number;
+    export let sendData = async() => {
+       await fetch ("/api/results", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            saturacionOxigeno,
+            tiempoSueno,
+            cargaHipoxica
+        })
+       })
     }
-    });
+    // import { onMount } from 'svelte';
+  
+    // onMount(() => {
+    //   const customButton = document.getElementById('selectFile');
+    //   const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    //   const fileNameElement = document.getElementById('fileName');
+      
+    //   if (customButton&&fileInput&&fileNameElement){
+    //   customButton.addEventListener('click', function() {
+    //     fileInput.click();
+    //   });
+  
+    //   fileInput.addEventListener('change', function() {
+    //     const files = fileInput.files;
+    //     const fileName = files ? files[0].name : '';
+    //     fileNameElement.textContent = fileName;
+    //     });
+    // }
+    // });
 </script>
   
 
