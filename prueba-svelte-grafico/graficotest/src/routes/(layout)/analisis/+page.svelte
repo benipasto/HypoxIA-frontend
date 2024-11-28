@@ -1,6 +1,6 @@
 
 <div class="container">
-    <input type="file" id="fileInput" style="display:none">
+    <!-- <input type="file" id="fileInput" style="display:none"> -->
     <!-- <button id="selectFile">Insertar PDF</button>
     <p id="fileName"></p> -->
     <input
@@ -19,50 +19,64 @@
         type="number"
     />
     <a href="resultados">
-        <button on:click={sendData}>Analizar</button>
+        <button on:click={handleAnalyze}>Analizar</button>
     </a>
         
     <h2> <span class="highlight">- Primero</span> aprete el botón de “Insertar PDF” para adjuntar el archivo pdf con los resultados clínicos.</h2>
     <h2> <span class="highlight">- Segundo</span> aprete el botón de “Analizar” para llevarte a otra pantalla con los resultados del análisis.</h2>
 </div>
 
-<script lang='ts'>
-
+<script lang="ts">
     let saturacionOxigeno: number; // Saturación de oxígeno
     let tiempoSueno: number; // Tiempo de sueño
-    let cargaHipoxica: number;
-    export let sendData = async() => {
-       await fetch ("/api/results", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            saturacionOxigeno,
-            tiempoSueno,
-            cargaHipoxica
-        })
-       })
-    }
-    // import { onMount } from 'svelte';
-  
-    // onMount(() => {
-    //   const customButton = document.getElementById('selectFile');
-    //   const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-    //   const fileNameElement = document.getElementById('fileName');
-      
-    //   if (customButton&&fileInput&&fileNameElement){
-    //   customButton.addEventListener('click', function() {
-    //     fileInput.click();
-    //   });
-  
-    //   fileInput.addEventListener('change', function() {
-    //     const files = fileInput.files;
-    //     const fileName = files ? files[0].name : '';
-    //     fileNameElement.textContent = fileName;
-    //     });
-    // }
-    // });
+    let cargaHipoxica: number; // Carga hipoxica
+
+    export let sendData = async () => {
+        await fetch("/api/results", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                saturacionOxigeno,
+                tiempoSueno,
+                cargaHipoxica,
+            }),
+        });
+    };
+
+    const sendToIA = async () => {
+        try {
+            const response = await fetch("http://127.0.0.1:8000/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    saturacionOxigeno,
+                    tiempoSueno,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log("Respuesta del servidor (Base de Datos):", data);
+
+            // Aquí puedes añadir lógica para mostrar un mensaje al usuario o manejar la respuesta
+        } catch (error) {
+            console.error("Error al enviar los datos a la Base de Datos:", error);
+        }
+    };
+
+    // Nueva función para manejar ambas acciones
+    const handleAnalyze = async () => {
+        await sendData(); // Envía los datos al primer endpoint
+        await sendToIA(); // Envía los datos a la base de datos
+        console.log("Ambas operaciones completadas.");
+    };
 </script>
   
 
