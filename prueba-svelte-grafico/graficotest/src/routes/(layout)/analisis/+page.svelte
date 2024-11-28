@@ -38,38 +38,40 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                saturacionOxigeno,
-                tiempoSueno,
+                SpO2: saturacionOxigeno,
+                Tiempo_Relativo: tiempoSueno,
                 cargaHipoxica,
             }),
         });
     };
 
     const sendToIA = async () => {
-        try {
-            const response = await fetch("http://127.0.0.1:8000/predict", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    saturacionOxigeno,
-                    tiempoSueno,
-                }),
-            });
+    try {
+        const response = await fetch("http://127.0.0.1:8000/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                saturacionOxigeno,
+                tiempoSueno,
+            }),
+        });
 
-            if (!response.ok) {
-                throw new Error(`Error en la respuesta: ${response.statusText}`);
-            }
-
-            const data = await response.json();
-            console.log("Respuesta del servidor (Base de Datos):", data);
-
-            // Aquí puedes añadir lógica para mostrar un mensaje al usuario o manejar la respuesta
-        } catch (error) {
-            console.error("Error al enviar los datos a la Base de Datos:", error);
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.statusText}`);
         }
-    };
+
+        const data = await response.json();
+        console.log("Respuesta del servidor (IA):", data.prediction);
+        localStorage.setItem("yeah", data.prediction.prediction);
+
+        // Aquí puedes añadir lógica para mostrar un mensaje al usuario o manejar la respuesta
+    } catch (error) {
+        console.error("Error al enviar los datos a la IA:", error);
+    }
+};
+
 
     // Nueva función para manejar ambas acciones
     const handleAnalyze = async () => {
