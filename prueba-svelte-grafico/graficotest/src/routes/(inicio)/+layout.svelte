@@ -15,12 +15,15 @@
             user = JSON.parse(userData).mail; // Muestra el mail del usuario
         }
     });
-
-    function logout() {
-        localStorage.removeItem('user');
-        user = null;
-        // Redirigir al usuario si es necesario. COMENTARIO: por ahora no lo uso pero sirve en un futuro. AL FINAL SI LO USO JAJA SALU2
+    function scrollToFooter() {
+    // Lógica para hacer scroll al footer (contacto)
+    document.querySelector("footer")?.scrollIntoView({ behavior: "smooth" });
     }
+    // function logout() {
+    //     localStorage.removeItem('user');
+    //     user = null;
+    //     // Redirigir al usuario si es necesario. COMENTARIO: por ahora no lo uso pero sirve en un futuro. AL FINAL SI LO USO JAJA SALU2
+    // }
 </script>
 <header>
     <a href="/" class="logo">
@@ -29,15 +32,18 @@
     <nav>
         {#if user}
             <div class='user'>
-                Bienvenido, {user}
-                <button on:click={logout}>Cerrar sesión</button>
+                <button><a href="/perfil">{user}</a></button>
             </div>
             <!-- acá abajo iría el botón de logout si algún dia lo ponemos -->
         {:else}
             <button><a href="/login">Iniciar sesión</a></button>
         {/if}    
-        <button><a href="/analisis">Análisis</a></button>
-        <button><a href="/perfil">Perfil</a></button>
+        {#if user}
+            <button><a href="/analisis">Análisis</a></button>
+        {:else}
+            <button><a href="/login">Análisis</a></button>
+        {/if}
+        <button on:click={scrollToFooter}>Contacto</button>
     </nav>
 </header>
 
@@ -57,12 +63,6 @@
         font-size: large;
     }
 
-    a {
-        /* Modifica todos los textos con links */
-        text-decoration: none;
-        color: #3A6D6A; /* Cambia el color del link */
-    }
-
     nav {
         display: flex;
         align-items: center;
@@ -71,11 +71,12 @@
         margin-right: 40px;
     }
 
-    nav button a {
+    nav button a{
         /* Modifica todos los textos con link DENTRO DE BUTTON */
         font-size: large;
         color: black;
         align-items: center;
+        text-decoration: none;
     }
 
     nav button {
@@ -86,6 +87,9 @@
         border-radius: 20px;
         height: 20px;
         cursor: pointer;
+        font-size: large;
+        color: black;
+        align-items: center;
     }
 
     nav button:hover {
@@ -153,7 +157,7 @@
 </style>
 
 <slot />
-<footer>
+<footer id="footer">
     <div class="contacto">
         <h3>Contacto:     <span class="highlight">hypoxia@gmail.com</span></h3>
         <h3>Teléfono:     <span class="highlight">+54 9 11 1234-5678 </span></h3>

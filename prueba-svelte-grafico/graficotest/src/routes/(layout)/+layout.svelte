@@ -7,6 +7,7 @@
 <script lang="ts">
     let user: string | null = null;
     import { onMount } from "svelte";
+    import { goto } from '$app/navigation';
 
     // Recuperar el usuario desde localStorage cuando se carga el componente
     onMount(() => {
@@ -16,11 +17,23 @@
         }
     });
 
-    function logout() {
-        localStorage.removeItem('user');
-        user = null;
-        // Redirigir al usuario si es necesario. COMENTARIO: por ahora no lo uso pero sirve en un futuro. AL FINAL SI LO USO JAJA SALU2
-    }
+    function goToHomeAndScroll() {
+    goto('/').then(() => {
+      // Después de navegar a la ruta raíz, hacemos scroll hasta el final de la página
+      setTimeout(() => {
+        const footer = document.getElementById('footer');
+        if (footer) {
+          footer.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Timeout para esperar a que se complete la navegación antes de hacer el scroll
+    });
+  }
+
+    // function logout() {
+    //     localStorage.removeItem('user');
+    //     user = null;
+    //     // Redirigir al usuario si es necesario. COMENTARIO: por ahora no lo uso pero sirve en un futuro. AL FINAL SI LO USO JAJA SALU2
+    // }
 </script>
 <header>
     <a href="/" class="logo">
@@ -29,15 +42,15 @@
     <nav>
         {#if user}
             <div class='user'>
-                Bienvenido, {user}
-                <button on:click={logout}>Cerrar sesión</button>
+                <button><a href="/perfil">{user}</a></button>
             </div>
             <!-- acá abajo iría el botón de logout si algún dia lo ponemos -->
         {:else}
             <button><a href="/login">Iniciar sesión</a></button>
         {/if}    
         <button><a href="/analisis">Análisis</a></button>
-        <button><a href="/perfil">Perfil</a></button>
+        <button on:click={goToHomeAndScroll}>Contacto</button>
+
     </nav>
 </header>
 
@@ -57,12 +70,6 @@
         font-size: large;
     }
 
-    a {
-        /* Modifica todos los textos con links */
-        text-decoration: none;
-        color: #3A6D6A; /* Cambia el color del link */
-    }
-
     nav {
         display: flex;
         align-items: center;
@@ -71,11 +78,12 @@
         margin-right: 40px;
     }
 
-    nav button a {
+    nav button a{
         /* Modifica todos los textos con link DENTRO DE BUTTON */
         font-size: large;
         color: black;
         align-items: center;
+        text-decoration: none;
     }
 
     nav button {
@@ -86,6 +94,9 @@
         border-radius: 20px;
         height: 20px;
         cursor: pointer;
+        font-size: large;
+        color: black;
+        align-items: center;
     }
 
     nav button:hover {

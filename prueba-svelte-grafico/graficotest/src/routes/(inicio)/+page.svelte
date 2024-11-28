@@ -4,7 +4,7 @@
             <h1>Cargá tu Análisis</h1>
             <h4>Haga Click en el botón de <span class="highlight">Análisis</span><br>para cargar el pdf con los datos</h4>
             <a href="/analisis">
-                <button>Análisis</button>
+                <button>Análisis</button> <!-- necesito que si no estés logueado análisis te mande a iniciar sesión, y si si te mande a analisis -->
             </a>
         </div>
         <div class="vectorHERO"><img src="vectorhero.png" alt="vector"></div>
