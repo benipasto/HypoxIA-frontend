@@ -18,6 +18,12 @@
         placeholder="Ingresa tu carga hipoxica (re troll)"
         type="number"
     />
+    <input
+    bind:value={paciente}
+    placeholder="Ingrese nombre de paciente"
+    type="text"
+    />
+
     <a href="resultados">
         <button on:click={handleAnalyze}>Analizar</button>
     </a>
@@ -30,17 +36,21 @@
     let saturacionOxigeno: number; // Saturación de oxígeno
     let tiempoSueno: number; // Tiempo de sueño
     let cargaHipoxica: number; // Carga hipoxica
+    let paciente: string;
 
     export let sendData = async () => {
+        const doctorId = JSON.parse(localStorage.getItem('user') ?? "{}").id
         await fetch("/api/results", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                SpO2: saturacionOxigeno,
-                Tiempo_Relativo: tiempoSueno,
+                saturacionOxigeno,
+                tiempoSueno,
                 cargaHipoxica,
+                paciente,
+                doctorId,
             }),
         });
     };

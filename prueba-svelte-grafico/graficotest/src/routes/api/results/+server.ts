@@ -34,5 +34,10 @@ export async function POST({ request }: any) {
             cargaHipoxica,
             doctorId
         }
-    })
+    });
+    if(!result)
+        return json({ result }, { status: 500 })
+    
+    return json({ result }, { status: 200 })
+
 }
