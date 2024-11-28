@@ -8,6 +8,9 @@
       return `${(value / 100) * (maxLeft - minLeft) + minLeft}%`;
     }
 
+    let yeah = localStorage.getItem("yeah");
+    console.log("este es tu yeah:", yeah);
+
     // Función para obtener el mensaje y la clase de color según el valor
     function getMessage(value: number): { message: string, colorClass: string, description: string } {
       if (value < 30) {
@@ -136,7 +139,7 @@
 
     <div class="slider-container">
         <input type="range" min="0" max="100" bind:value />
-        <p>Valor actual: {value}</p>
+        <p>Valor actual: {yeah}</p>
     </div>
 
     <!-- Texto fijo con el mensaje dinámico -->
