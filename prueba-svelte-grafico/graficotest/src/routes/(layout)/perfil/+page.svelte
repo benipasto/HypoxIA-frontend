@@ -5,7 +5,7 @@
     let userMail: string = JSON.parse(localStorage.getItem('user') ?? '{}').mail || '';
 
     // Lista para almacenar los análisis recuperados
-    let analysisHistory: { paciente: string; fecha: string }[] = [];
+    let analysisHistory: { paciente: string; cargaHipoxica: string }[] = [];
 
     // Función para obtener los análisis del backend
     async function fetchAnalysis() {
@@ -22,7 +22,7 @@
                 const data = await response.json();
                 analysisHistory = data.results.map((item: any) => ({
                     paciente: item.paciente,
-                    fecha: new Date(item.createdAt).toLocaleDateString() // Formatea la fecha
+                    cargaHipoxica: item.cargaHipoxica,
                 }));
             } else {
                 console.error('Error al obtener los análisis:', await response.text());
@@ -133,7 +133,7 @@
             {#each analysisHistory as analysis}
                 <div class="menu-item">
                     <span>Análisis paciente {analysis.paciente}</span>
-                    <span>{analysis.fecha}</span>
+                    <span>Carga hipóxica: {analysis.cargaHipoxica}</span>
                 </div>
             {/each}
         </div>
