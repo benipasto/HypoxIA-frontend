@@ -14,9 +14,10 @@
         type="number"
     />
     <input
-        bind:value={cargaHipoxica}
-        placeholder="Ingresa tu carga hipoxica (re troll)"
-        type="number"
+        value={cargaHipoxica || ''}
+        placeholder="Carga Hipoxica (calculada automáticamente)"
+        type="text"
+        disabled
     />
     <input
     bind:value={paciente}
@@ -35,27 +36,10 @@
 <script lang="ts">
     let saturacionOxigeno: number; // Saturación de oxígeno
     let tiempoSueno: number; // Tiempo de sueño
-    let cargaHipoxica: number; // Carga hipoxica (calculada por la IA)
+    let cargaHipoxica: number; // Carga hipoxica (se actualizará tras recibir datos de la IA)
     let paciente: string;
 
-    const sendData = async () => {
-        const doctorId = JSON.parse(localStorage.getItem('user') ?? "{}").id;
-        await fetch("/api/results", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                saturacionOxigeno,
-                tiempoSueno,
-                cargaHipoxica,
-                paciente,
-                doctorId,
-            }),
-        });
-    };
-
-    const sendToIA = async (): Promise<number> => {
+    const sendToIA = async () => {
         try {
             const response = await fetch("http://127.0.0.1:8000/predict", {
                 method: "POST",
@@ -69,30 +53,52 @@
             });
 
             if (!response.ok) {
-                throw new Error(`Error en la respuesta: ${response.statusText}`);
+                throw new Error(`Error en la respuesta de la IA: ${response.statusText}`);
             }
 
             const data = await response.json();
-            console.log("Respuesta del servidor (IA):", data.prediction);
-            return data.prediction.prediction; // Asume que este es el valor de cargaHipoxica
+            cargaHipoxica = data.prediction; // Actualiza cargaHipoxica con el valor recibido
+            console.log("Carga Hipoxica calculada por IA:", cargaHipoxica);
         } catch (error) {
             console.error("Error al enviar los datos a la IA:", error);
-            throw error; // Lanza el error para manejarlo en el flujo principal
         }
     };
 
-    // Nueva función para manejar ambas acciones
-    const handleAnalyze = async () => {
-        try {
-            // Obtén el valor de cargaHipoxica desde la IA
-            cargaHipoxica = await sendToIA();
+    const sendData = async () => {
+        const doctorId = JSON.parse(localStorage.getItem("user") ?? "{}").id;
 
-            // Ahora envía todos los datos al backend
-            await sendData();
-            console.log("Ambas operaciones completadas.");
+        try {
+            const response = await fetch("/api/results", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    saturacionOxigeno,
+                    tiempoSueno,
+                    cargaHipoxica, // Ya tiene el valor calculado por la IA
+                    paciente,
+                    doctorId,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del backend: ${response.statusText}`);
+            }
+
+            console.log("Datos enviados al backend correctamente.");
         } catch (error) {
-            console.error("Error en el proceso de análisis:", error);
-            alert("Hubo un error durante el análisis. Por favor, intenta nuevamente.");
+            console.error("Error al enviar los datos al backend:", error);
+        }
+    };
+
+    const handleAnalyze = async () => {
+        await sendToIA(); // Obtiene cargaHipoxica desde la IA
+        if (cargaHipoxica !== undefined) {
+            await sendData(); // Envía los datos al backend
+            console.log("Datos procesados y enviados.");
+        } else {
+            console.error("No se pudo calcular cargaHipoxica. Operación abortada.");
         }
     };
 </script>
