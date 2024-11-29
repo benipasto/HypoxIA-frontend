@@ -35,11 +35,11 @@
 <script lang="ts">
     let saturacionOxigeno: number; // Saturación de oxígeno
     let tiempoSueno: number; // Tiempo de sueño
-    let cargaHipoxica: number; // Carga hipoxica
+    let cargaHipoxica: number; // Carga hipoxica (calculada por la IA)
     let paciente: string;
 
     const sendData = async () => {
-        const doctorId = JSON.parse(localStorage.getItem('user') ?? "{}").id
+        const doctorId = JSON.parse(localStorage.getItem('user') ?? "{}").id;
         await fetch("/api/results", {
             method: "POST",
             headers: {
@@ -55,42 +55,47 @@
         });
     };
 
-    const sendToIA = async () => {
-    try {
-        const response = await fetch("http://127.0.0.1:8000/predict", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                saturacionOxigeno,
-                tiempoSueno,
-            }),
-        });
+    const sendToIA = async (): Promise<number> => {
+        try {
+            const response = await fetch("http://127.0.0.1:8000/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    saturacionOxigeno,
+                    tiempoSueno,
+                }),
+            });
 
-        if (!response.ok) {
-            throw new Error(`Error en la respuesta: ${response.statusText}`);
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log("Respuesta del servidor (IA):", data.prediction);
+            return data.prediction.prediction; // Asume que este es el valor de cargaHipoxica
+        } catch (error) {
+            console.error("Error al enviar los datos a la IA:", error);
+            throw error; // Lanza el error para manejarlo en el flujo principal
         }
-
-        const data = await response.json();
-        console.log("Respuesta del servidor (IA):", data.prediction);
-        localStorage.setItem("yeah", data.prediction.prediction);
-
-        // Aquí puedes añadir lógica para mostrar un mensaje al usuario o manejar la respuesta
-    } catch (error) {
-        console.error("Error al enviar los datos a la IA:", error);
-    }
-};
-
+    };
 
     // Nueva función para manejar ambas acciones
     const handleAnalyze = async () => {
-        await sendData(); // Envía los datos al primer endpoint
-        await sendToIA(); // Envía los datos a la base de datos
-        console.log("Ambas operaciones completadas.");
+        try {
+            // Obtén el valor de cargaHipoxica desde la IA
+            cargaHipoxica = await sendToIA();
+
+            // Ahora envía todos los datos al backend
+            await sendData();
+            console.log("Ambas operaciones completadas.");
+        } catch (error) {
+            console.error("Error en el proceso de análisis:", error);
+            alert("Hubo un error durante el análisis. Por favor, intenta nuevamente.");
+        }
     };
 </script>
-  
 
 <style>
 
