@@ -38,7 +38,7 @@
     let cargaHipoxica: number; // Carga hipoxica
     let paciente: string;
 
-    export let sendData = async () => {
+    const sendData = async () => {
         const doctorId = JSON.parse(localStorage.getItem('user') ?? "{}").id
         await fetch("/api/results", {
             method: "POST",

@@ -1,6 +1,36 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     // Recuperar el mail del usuario logueado desde localStorage
     let userMail: string = JSON.parse(localStorage.getItem('user') ?? '{}').mail || '';
+
+    // Lista para almacenar los análisis recuperados
+    let analysisHistory: { paciente: string; fecha: string }[] = [];
+
+    // Función para obtener los análisis del backend
+    async function fetchAnalysis() {
+        try {
+            const doctorId = JSON.parse(localStorage.getItem('user') ?? "{}").id as number;
+            const response = await fetch('/api/results?doctorId=' +doctorId.toString(), {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                analysisHistory = data.results.map((item: any) => ({
+                    paciente: item.paciente,
+                    fecha: new Date(item.createdAt).toLocaleDateString() // Formatea la fecha
+                }));
+            } else {
+                console.error('Error al obtener los análisis:', await response.text());
+            }
+        } catch (error) {
+            console.error('Error en la conexión:', error);
+        }
+    }
 
     function logout(event: MouseEvent) {
         event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
@@ -8,6 +38,11 @@
         // Redirigir al usuario si es necesario
         window.location.href = "/login"; // Redirigir al login después del logout
     }
+
+    // Ejecutar la función cuando el componente se monte
+    onMount(() => {
+        fetchAnalysis();
+    });
 </script>
 
 <style>
@@ -86,7 +121,6 @@
 </style>
 
 <div class="container">
-
     <div class="user-info">
         <p><strong>Mail</strong></p>
         <p class="mail">{userMail}</p>
@@ -96,18 +130,12 @@
     <div class="menu">
         <h2 class="menu-title">Historial</h2>
         <div class="menu-items scrollbar">
-            <div class="menu-item">
-                <span>Análisis paciente Pablo Pérez</span>
-                <span>7/8/2024</span>
-            </div>
-            <div class="menu-item">
-                <span>Análisis paciente Pablo Pérez</span>
-                <span>7/8/2024</span>
-            </div>
-            <div class="menu-item">
-                <span>Análisis paciente Pablo Pérez</span>
-                <span>7/8/2024</span>
-            </div>
+            {#each analysisHistory as analysis}
+                <div class="menu-item">
+                    <span>Análisis paciente {analysis.paciente}</span>
+                    <span>{analysis.fecha}</span>
+                </div>
+            {/each}
         </div>
     </div>
 </div>

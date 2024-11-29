@@ -1,8 +1,9 @@
 import prisma from "$lib/prisma";
 import { json } from "@sveltejs/kit";
 
-export async function GET({ params }: any) {
-    let { doctorId, id } = await params.json();
+export async function GET(event:any) {
+    const doctorId = Number(event.url.searchParams.get('doctorId'));
+    const id = Number(event.url.searchParams.get('id'));
 
     if (id) {
         let result = await prisma.analisis.findUnique({
