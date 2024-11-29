@@ -41,6 +41,9 @@
 
     const sendToIA = async () => {
         try {
+            // simula una pantalla de "cargando" eliminando el valor actual
+            localStorage.removeItem("cargaHipoxica");
+            
             const response = await fetch("http://127.0.0.1:8000/predict", {
                 method: "POST",
                 headers: {
@@ -59,6 +62,7 @@
             const data = await response.json();
             cargaHipoxica = data.prediction; // Actualiza cargaHipoxica con el valor recibido
             console.log("Carga Hipoxica calculada por IA:", cargaHipoxica);
+            localStorage.setItem("cargaHipoxica", JSON.stringify(cargaHipoxica));
         } catch (error) {
             console.error("Error al enviar los datos a la IA:", error);
         }
@@ -87,6 +91,7 @@
             }
 
             console.log("Datos enviados al backend correctamente.");
+
         } catch (error) {
             console.error("Error al enviar los datos al backend:", error);
         }
