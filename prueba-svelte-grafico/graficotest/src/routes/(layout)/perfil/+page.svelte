@@ -118,6 +118,11 @@
     .scrollbar {
         overflow-y: scroll;
     }
+
+    h3{
+        font-size: 20px;
+        font-weight: 300;
+    }
 </style>
 
 <div class="container">
@@ -130,12 +135,16 @@
     <div class="menu">
         <h2 class="menu-title">Historial</h2>
         <div class="menu-items scrollbar">
-            {#each analysisHistory as analysis}
-                <div class="menu-item">
-                    <span>Análisis paciente {analysis.paciente}</span>
-                    <span>Carga hipóxica: {analysis.cargaHipoxica}</span>
-                </div>
-            {/each}
+            {#if analysisHistory.length === 0}
+                <h3>No se han encontrado análisis en el sistema.</h3>
+            {:else}
+                {#each analysisHistory as analysis}
+                    <div class="menu-item">
+                        <span>Análisis paciente {analysis.paciente}</span>
+                        <span>Carga hipóxica: {analysis.cargaHipoxica}</span>
+                    </div>
+                {/each}
+            {/if}
         </div>
     </div>
 </div>
