@@ -5,19 +5,13 @@
     <p id="fileName"></p> -->
     <input
         bind:value={saturacionOxigeno}
-        placeholder="Ingresa tu saturación de oxígeno"
+        placeholder="Ingrese saturación de oxígeno"
         type="number"
     />
     <input
         bind:value={tiempoSueno}
-        placeholder="Ingresa tu tiempo de sueño"
+        placeholder="Ingrese tiempo de sueño"
         type="number"
-    />
-    <input
-        value={cargaHipoxica || ''}
-        placeholder="Carga Hipoxica (calculada automáticamente)"
-        type="text"
-        disabled
     />
     <input
     bind:value={paciente}
@@ -29,7 +23,7 @@
         <button on:click={handleAnalyze}>Analizar</button>
     </a>
         
-    <h2> <span class="highlight">- Primero</span> aprete el botón de “Insertar PDF” para adjuntar el archivo pdf con los resultados clínicos.</h2>
+    <h2> <span class="highlight">- Primero</span> rellene las casillas con los valores necesarios.</h2>
     <h2> <span class="highlight">- Segundo</span> aprete el botón de “Analizar” para llevarte a otra pantalla con los resultados del análisis.</h2>
 </div>
 
@@ -124,29 +118,50 @@
         margin-top: 15px;
     }
     .container button{
-        padding: 20px 40px;
+        padding: 10px 40px;
         background-color: #27A69E;
         border: none;
         color: #FFFFFF;
         font-size: 18px;
         border-radius: 20px;
         cursor: pointer;
-        margin-top: 20px;
+        margin-top: 10px;
         font-size: 30px;
     }
     button:hover{
         background-color: #1B7B75;
     }
     h2{
-        margin-top: 50px;
-        flex-direction: row;
-        padding: 0px 0px;
+        margin-top: 30px;
+        flex-direction: column;
+        font-size: 24px;
+        font-weight: 500;
     }
     .highlight{
-        color: #FF5757;
+        color: #000000;
+        font-weight: bold;
     }
     p{
         font-size: large;
+    }
+    input{
+        border-color: #27A69E;
+        padding: 15px 20px;
+        background-color: #DDE0E0;
+        border-radius: 25px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        box-sizing: border-box;
+        width: 600px;
+        box-shadow: none;
+    }
+    input::placeholder{
+        font-size: 18px;
+        grid: center;
+    }
+    input:focus {
+    border-color: #1F807A; /* Color más oscuro para el enfoque */
+    outline: none;
     }
 
 </style>
