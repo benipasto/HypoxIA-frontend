@@ -39,12 +39,13 @@
               bind:password 
               bind:confirmPassword 
               onRegister={handleRegister} />
-              <!-- <button on:click={register}>Registrar</button> -->
             {/if}
         </div>
     </div>
     
-    <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
+    <div class="loginimg">
+        <img src="registrarse.png" alt="Imagen de registro" />
+    </div>
 </div>
 
 {#if showModal}
@@ -76,14 +77,14 @@
         display: flex;
         height: 100vh;
     }
-    .login{
+    .login {
         background-color: #DDE0E0;
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    button{
+    button {
         padding: 15px 30px;
         background-color: #27A69E;
         border: none;
@@ -92,52 +93,56 @@
         border-radius: 20px;
         cursor: pointer;
     }
-    button:hover{
+    button:hover {
         background-color: #1B7B75;
     }
-    .loginimg{
+    .loginimg {
         flex: 1;
-        background-image: url('registrarse.png');
-        background-size: cover;
-        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .loginimg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .modal {
-      background-color: #DDE0E0;
-      padding: 30px 20px;
-      border-radius: 25px;
-      text-align: center;
+        background-color: #DDE0E0;
+        padding: 30px 20px;
+        border-radius: 25px;
+        text-align: center;
     }
 
     .modal h2 {
-      margin-bottom: 20px;
-      font-weight: 100;
-      font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: 100;
+        font-size: 24px;
     }
 
     .modal button {
-      padding: 10px 20px;
-      background-color: #27A69E;
-      color: white;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
+        padding: 10px 20px;
+        background-color: #27A69E;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
     }
 
     .modal button:hover {
         background-color: #1B7B75;
     }
 </style>
-
