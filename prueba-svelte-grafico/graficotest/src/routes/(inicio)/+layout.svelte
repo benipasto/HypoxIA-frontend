@@ -73,7 +73,7 @@
 
     nav button a{
         /* Modifica todos los textos con link DENTRO DE BUTTON */
-        font-size: large;
+        font-size: 20px;
         color: black;
         align-items: center;
         text-decoration: none;
@@ -87,7 +87,7 @@
         border-radius: 20px;
         height: 20px;
         cursor: pointer;
-        font-size: large;
+        font-size: 20px;
         color: black;
         align-items: center;
     }
@@ -116,7 +116,7 @@
     .logo img {
         height: 30px;
         margin-right: 5px;
-        margin-left: 10px;
+        margin-left: 20px;
     }
 
     footer{
