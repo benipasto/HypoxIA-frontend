@@ -154,6 +154,7 @@
         box-sizing: border-box;
         width: 600px;
         box-shadow: none;
+        border-style:solid;
     }
     input::placeholder{
         font-size: 18px;
