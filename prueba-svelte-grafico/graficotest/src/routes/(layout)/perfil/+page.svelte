@@ -134,7 +134,6 @@
     .scrollbar::-webkit-scrollbar-thumb {
         background-color: #1B1B1B; /* Color del pulgar */
         border-radius: 10px; /* Bordes redondeados */
-        border: 3px solid #ffffff; /* Bordes del pulgar */
     }
 
     /* Cambiar el color del pulgar cuando está en hover */

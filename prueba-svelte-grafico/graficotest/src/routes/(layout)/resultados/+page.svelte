@@ -105,6 +105,8 @@ h2 {
   font-size: 16px;
 }
 
+.span{}
+
 .flecha {
   position: absolute;
   bottom: -70px;
@@ -132,11 +134,11 @@ h2 {
 }
 
 .alto {
-  color: #D72D2D; /* Rojo */
+  color: #D96C27; /* Rojo */
 }
 
 .muy-alto {
-  color: #B10000; /* Rojo intenso */
+  color: #D72D2D; /* Rojo intenso */
 }
 
 /* Estilo para el texto "Riesgo actual" */
@@ -148,7 +150,7 @@ h2 {
 /* Estilo para los párrafos de descripción */
 .descripcion {
   font-size: 1.1rem;
-  color: #333;
+  color: #000000;
   margin-top: 10px;
   font-weight: 300;
   max-width: 600px;
