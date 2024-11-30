@@ -119,6 +119,29 @@
         overflow-y: scroll;
     }
 
+    /* Cambiar el color del fondo de la barra */
+    .scrollbar::-webkit-scrollbar {
+        width: 12px; /* Ancho de la barra */
+    }
+
+    /* Cambiar el color del fondo de la barra de desplazamiento */
+    .scrollbar::-webkit-scrollbar-track {
+        background-color: #A0A1A1; /* Color de fondo de la barra */
+        border-radius: 10px; /* Bordes redondeados */
+    }
+
+    /* Cambiar el color del pulgar (la parte que se mueve) */
+    .scrollbar::-webkit-scrollbar-thumb {
+        background-color: #1B1B1B; /* Color del pulgar */
+        border-radius: 10px; /* Bordes redondeados */
+        border: 3px solid #ffffff; /* Bordes del pulgar */
+    }
+
+    /* Cambiar el color del pulgar cuando está en hover */
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: #007acc; /* Color cuando está siendo arrastrado */
+    }
+
     h3{
         font-size: 20px;
         font-weight: 300;
@@ -138,7 +161,7 @@
             {#if analysisHistory.length === 0}
                 <h3>No se han encontrado análisis en el sistema.</h3>
             {:else}
-                {#each analysisHistory as analysis}
+                {#each analysisHistory.reverse() as analysis} <!-- no se si el .reverse funcionará, si algo tira error borrarlo -->
                     <div class="menu-item">
                         <span>Análisis paciente {analysis.paciente}</span>
                         <span>Carga hipóxica: {analysis.cargaHipoxica}</span>
