@@ -8,36 +8,23 @@
     let password: string = '';
     let confirmPassword: string = '';
     let showIngresamail = true;
+    let showModal = false; // Variable para controlar el modal
 
     function toggle() {
         showIngresamail = !showIngresamail;
     }
     function handleRegister() {
-    register(mail, password, confirmPassword);
-  }
+        register(mail, password, confirmPassword, () => {
+            showModal = true; // Activa el modal si el registro es exitoso
+        });
+    }
 
-    // function register(mail: string, password: string, confirmPassword: string) {
-    // if (!mail.trim()) {
-    //     alert('El campo de correo electrónico no puede estar vacío');
-    //     return;
-    // }
+    function closeModal() {
+        showModal = false; // Cierra el modal
+        window.location.href = '/';
+    }
 
-    // if (!password.trim() || !confirmPassword.trim()) {
-    //     alert('Los campos de contraseña no pueden estar vacíos');
-    //     return;
-    // }
-
-    // if (password !== confirmPassword) {
-    //     alert('Las contraseñas no coinciden');
-    //     return;
-    // }
-
-    // localStorage.setItem('mail', mail);
-    // localStorage.setItem('password', password);
-    // alert('Registro exitoso');
-    // }
-
-setContext('register', register); // Coloca la función en el contexto
+    setContext('register', register); // Coloca la función en el contexto
 </script>
 
 <div class="container">
@@ -54,12 +41,20 @@ setContext('register', register); // Coloca la función en el contexto
               onRegister={handleRegister} />
               <!-- <button on:click={register}>Registrar</button> -->
             {/if}
-          </div>
+        </div>
     </div>
     
     <div class="loginimg"></div> <!--se pone la imagendesde el css como background, así que el div queda vacío-->
-    
 </div>
+
+{#if showModal}
+    <div class="modal-overlay" on:click={closeModal}>
+        <div class="modal" on:click|stopPropagation>
+            <h2>Te has registrado correctamente.</h2>
+            <button on:click={closeModal}>Cerrar</button>
+        </div>
+    </div>
+{/if}
 
 <style>
     * {
@@ -100,11 +95,49 @@ setContext('register', register); // Coloca la función en el contexto
     button:hover{
         background-color: #1B7B75;
     }
-    /* ahora el estilizado de la imagen de la derecha */
     .loginimg{
         flex: 1;
         background-image: url('registrarse.png');
         background-size: cover;
         background-position: center;
     }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal {
+      background-color: #DDE0E0;
+      padding: 30px 20px;
+      border-radius: 25px;
+      text-align: center;
+    }
+
+    .modal h2 {
+      margin-bottom: 20px;
+      font-weight: 100;
+      font-size: 24px;
+    }
+
+    .modal button {
+      padding: 10px 20px;
+      background-color: #27A69E;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+        background-color: #1B7B75;
+    }
 </style>
+
