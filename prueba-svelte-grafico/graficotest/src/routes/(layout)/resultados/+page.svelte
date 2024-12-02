@@ -178,7 +178,7 @@ h2 {
   </div>
 
   <div class="slider-container">
-    <input type="range" min="0" max="100" bind:value />
+    <!-- <input type="range" min="0" max="100" bind:value /> -->
     <p>Valor actual: {value}</p>
   </div>
 
