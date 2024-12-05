@@ -1,0 +1,22 @@
+###
+// Todos los resultados del doctor 1
+GET http://localhost:5173/api/results?doctorId=1
+Content-Type: application/json
+
+###
+// Analisis de id específico 2
+GET http://localhost:5173/api/results?id=2&doctorId=1
+Content-Type: application/json
+
+###
+// Subir un análisis
+POST http://localhost:5173/api/results
+Content-Type: application/json
+
+{
+  "paciente": "Waterdy",
+  "saturacionOxigeno": 30,
+  "tiempoSueno": 3000,
+  "cargaHipoxica": 0.32,
+  "doctorId": 1
+}
